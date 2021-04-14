@@ -21,7 +21,6 @@ public class inicio extends javax.swing.JFrame {
     public inicio() {
         initComponents();
         vDatos =Controlador.Iodatos.cargarDatos();
-         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/magia.png")).getImage());
         for (Cliente v : vDatos) {
             jTextAreaDatos.setText(jTextAreaDatos.getText() + "\n" + v.toString());
         }
@@ -82,6 +81,11 @@ public class inicio extends javax.swing.JFrame {
         jLabelEdad.setText("Edad");
 
         jTextFieldEdad.setText("Introducir edad");
+        jTextFieldEdad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldEdadMouseClicked(evt);
+            }
+        });
 
         jLabel1.setText("Estado civil");
 
@@ -234,13 +238,14 @@ public class inicio extends javax.swing.JFrame {
         String apellido1 = jTextFieldApellido1.getText();
         String apellido2 = jTextFieldApellido2.getText();
         String estadoCivl=(String) jComboBoxestado.getSelectedItem();
+        String sexo;
         if(jRadioButtonHombre.isSelected()){
-              String sexo = jRadioButtonHombre.getText();
+               sexo = jRadioButtonHombre.getText();
         }else{
-            String sexo = jRadioButtonMujer.getText();
+             sexo = jRadioButtonMujer.getText();
         }
        int edad=Integer.valueOf(jTextFieldEdad.getText());
-       Cliente c = new Cliente(nombre, apellido1, apellido2, estadoCivl, nombre, edad);
+       Cliente c = new Cliente(nombre, apellido1, apellido2, estadoCivl, sexo, edad);
        vDatos.add(c);
        jTextAreaDatos.setText(jTextAreaDatos.getText() + "\n" + c.toString());
       
@@ -250,6 +255,10 @@ public class inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jToggleButtonSalirMouseClicked
+
+    private void jTextFieldEdadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldEdadMouseClicked
+        jTextFieldEdad.setText("");
+    }//GEN-LAST:event_jTextFieldEdadMouseClicked
 
     /**
      * @param args the command line arguments
