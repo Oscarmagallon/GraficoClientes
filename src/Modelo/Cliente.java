@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
+package Modelo;
 
 /**
  *
@@ -16,6 +16,17 @@ public class Cliente {
     private String estadoCivil;
     private String sexo;
     private int edad;
+
+    public Cliente(String nombre, String apellido1, String apellido2, String estadoCivil, String sexo, int edad) {
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.estadoCivil = estadoCivil;
+        this.sexo = sexo;
+        this.edad = edad;
+    }
+    
+    
 
     /**
      * @return the nombre
