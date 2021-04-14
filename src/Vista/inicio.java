@@ -7,6 +7,7 @@ package Vista;
 
 import Modelo.Cliente;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,8 +20,16 @@ public class inicio extends javax.swing.JFrame {
      */
     public inicio() {
         initComponents();
-        ArrayList vDatos = new ArrayList();
+        vDatos =Controlador.Iodatos.cargarDatos();
+         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/magia.png")).getImage());
+        for (Cliente v : vDatos) {
+            jTextAreaDatos.setText(jTextAreaDatos.getText() + "\n" + v.toString());
+        }
+     
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +56,8 @@ public class inicio extends javax.swing.JFrame {
         jTextFieldApellido1 = new javax.swing.JTextField();
         jComboBoxestado = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jTextFieldTexto = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaDatos = new javax.swing.JTextArea();
         jToggleButtonSalir = new javax.swing.JToggleButton();
         jButtonGuardar = new javax.swing.JButton();
 
@@ -151,15 +161,19 @@ public class inicio extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(214, 240, 240));
 
+        jTextAreaDatos.setColumns(20);
+        jTextAreaDatos.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaDatos);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextFieldTexto)
+            .addComponent(jScrollPane1)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTextFieldTexto, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
         );
 
         jToggleButtonSalir.setText("Salir");
@@ -227,6 +241,8 @@ public class inicio extends javax.swing.JFrame {
         }
        int edad=Integer.valueOf(jTextFieldEdad.getText());
        Cliente c = new Cliente(nombre, apellido1, apellido2, estadoCivl, nombre, edad);
+       vDatos.add(c);
+       jTextAreaDatos.setText(jTextAreaDatos.getText() + "\n" + c.toString());
       
     }//GEN-LAST:event_jButtonGuardarMouseClicked
 
@@ -284,11 +300,12 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButtonHombre;
     private javax.swing.JRadioButton jRadioButtonMujer;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaDatos;
     private javax.swing.JTextField jTextFieldApellido1;
     private javax.swing.JTextField jTextFieldApellido2;
     private javax.swing.JTextField jTextFieldEdad;
     private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldTexto;
     private javax.swing.JToggleButton jToggleButtonSalir;
     // End of variables declaration//GEN-END:variables
 }
