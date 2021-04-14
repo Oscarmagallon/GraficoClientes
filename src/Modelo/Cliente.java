@@ -114,7 +114,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", estadoCivil=" + estadoCivil + ", sexo=" + sexo + ", edad=" + edad + '}';
+        return nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", estadoCivil=" + estadoCivil + ", sexo=" + sexo + ", edad=" + edad + '}';
     }
     
     
